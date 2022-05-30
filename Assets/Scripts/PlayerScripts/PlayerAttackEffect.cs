@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class PlayerAttackEffect : MonoBehaviour
 {
-    public GameObject groundImpactSpawn, kickSpawn, fireTornadoSpawn, fireShieldSpawn;
-    public GameObject groundImpactPrefab, kickPrefab, fireTornadoPrefab, fireShieldPrefab, healPrefab, thunderPrefab;
-    public GameObject slashEffect;
-    public GameManager gameManager;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private GameObject groundImpactSpawn, kickSpawn, fireTornadoSpawn, fireShieldSpawn;
+    [SerializeField] private GameObject groundImpactPrefab, kickPrefab, fireTornadoPrefab, fireShieldPrefab, healPrefab, thunderPrefab;
+    [SerializeField] private GameObject slashEffect;
+    [SerializeField] private GameManager gameManager;
+    #endregion
+
+    #region MonoBehaviour Callbacks
+
+    #endregion
+
+    #region Public Methods
 
     public void BasicAttack()
     {
@@ -94,5 +106,9 @@ public class PlayerAttackEffect : MonoBehaviour
             gameManager.ThunderSound();
         }
     }
-   
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

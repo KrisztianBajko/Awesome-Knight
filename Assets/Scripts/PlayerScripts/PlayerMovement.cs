@@ -5,34 +5,38 @@ using UnityEngine;
 //TODO: check if grounded and apply gravity
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator animator;
-    public CharacterController cc;
 
-    public float moveSpeed;
-    public bool canMove;
-    public bool finishedMovement;
-    public bool isGrounded = true;
-    public Vector3 velocity;
-
-    public Transform groundCheck;
-    public float groundDistance;
-    public LayerMask groundLayer;
-
-    public Vector3 targetPosition = Vector3.zero;
-    public Vector3 playerMove = Vector3.zero;
-    public float playerToPointDistance;
-    public float attackRange;
-
-    public float gravity;
-    public float height;
+    #region Public Fields
     public bool isDead;
-
+    public bool canMove;
     public bool IsDead
     {
-        get{ return isDead; }
+        get { return isDead; }
         set { isDead = value; }
     }
+    #endregion
+
+    #region Private Fields
     
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundDistance;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float playerToPointDistance;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float gravity;
+    [SerializeField] private float height;
+
+    private Vector3 velocity;
+    private Vector3 targetPosition = Vector3.zero;
+    private Vector3 playerMove = Vector3.zero;
+    private bool finishedMovement;
+    private bool isGrounded = true;
+    private Animator animator;
+    private CharacterController cc;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -54,8 +58,35 @@ public class PlayerMovement : MonoBehaviour
 
        
     }
-    
-    void CalculateHeight()
+    #endregion
+
+    #region Public Methods
+    public bool FinishedMovement
+    {
+        get
+        {
+            return finishedMovement;
+        }
+        set
+        {
+            finishedMovement = value;
+        }
+    }
+    public Vector3 TargetPosition
+    {
+        get
+        {
+            return targetPosition;
+        }
+        set
+        {
+            targetPosition = value;
+        }
+    }
+    #endregion
+
+    #region Private Methods
+   private void CalculateHeight()
     {
         if(isGrounded && velocity.y < 0)
         {
@@ -64,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
        
      
     }
-    void CheckIfFinishedMovement()
+   private void CheckIfFinishedMovement()
     {
         if (!finishedMovement)
         {
@@ -81,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-    void MoveThePlayer()
+   private void MoveThePlayer()
     {
         if (Input.GetMouseButton(0))
         {
@@ -128,27 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-    public bool FinishedMovement
-    {
-        get
-        {
-            return finishedMovement;
-        }
-        set
-        {
-            finishedMovement = value;
-        }
-    }
-    public Vector3 TargetPosition
-    {
-        get
-        {
-            return targetPosition;
-        }
-        set
-        {
-            targetPosition = value;
-        }
-    }
+
+    #endregion
 
 }

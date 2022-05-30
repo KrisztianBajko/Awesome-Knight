@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public float manaAmount;
-    public PlayerAttack playerAttack;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float manaAmount;
+    private PlayerAttack playerAttack;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
@@ -24,4 +33,14 @@ public class PickUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

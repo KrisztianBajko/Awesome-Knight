@@ -5,25 +5,31 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
-    public Image CDImage1;
-    public Image CDImage2;
-    public Image CDImage3;
-    public Image CDImage4;
-    public Image CDImage5;
-    public Image CDImage6;
-    public Image[] reqImagies;
-    public int[] fadeImages = new[] { 0, 0, 0, 0, 0, 0 };
+    #region Public Fields
 
-    public Animator animator;
+    #endregion
 
-    public bool canAttack = true;
+    #region Private Fields
+    [SerializeField] private Image CDImage1;
+    [SerializeField] private Image CDImage2;
+    [SerializeField] private Image CDImage3;
+    [SerializeField] private Image CDImage4;
+    [SerializeField] private Image CDImage5;
+    [SerializeField] private Image CDImage6;
+    [SerializeField] private Image[] reqImagies;
+    [SerializeField] private float maxMana;
+    [SerializeField] private float currentMana;
+    [SerializeField] private Image manaIcon;
+    [SerializeField] private int[] fadeImages = new[] { 0, 0, 0, 0, 0, 0 };
 
-    public PlayerMovement playerMovement;
-    public PlayerStats playerStats;
-    public float maxMana;
-    public float currentMana;
-    public Image manaIcon;
-    
+    private bool canAttack = true;
+    private Animator animator;
+    private PlayerMovement playerMovement;
+    private PlayerStats playerStats;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -52,40 +58,10 @@ public class PlayerAttack : MonoBehaviour
         CheckToInput();
         CheckForLevel();
     }
-    void CheckForMana(float manaCost)
-    {
-        if(currentMana>= manaCost)
-        {
-            currentMana -= manaCost;
-        }
-       
 
-    }
-    void CheckForLevel()
-    {
-        switch (playerStats.level)
-        {
-            case 2:
-                reqImagies[0].gameObject.SetActive(false);
-                break;
-            case 3:
-                reqImagies[1].gameObject.SetActive(false);
-                break;
-            case 5:
-                reqImagies[2].gameObject.SetActive(false);
-                break;
-            case 9:
-                reqImagies[3].gameObject.SetActive(false);
-                break;
-            case 12:
-                reqImagies[4].gameObject.SetActive(false);
-                break;
-            case 15:
-                reqImagies[5].gameObject.SetActive(false);
-                break;
+    #endregion
 
-        }
-    }
+    #region Public Methods
     public void Mana(float manaAmount)
     {
         currentMana += manaAmount;
@@ -95,10 +71,9 @@ public class PlayerAttack : MonoBehaviour
         }
         manaIcon.fillAmount = currentMana / maxMana;
     }
-    void DisplayMana()
-    {
-        manaIcon.fillAmount = currentMana / maxMana;
-    }
+    #endregion
+
+    #region Private Methods
     private void CheckToInput()
     {
         if (animator.GetInteger("Atk") == 0)
@@ -113,7 +88,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (playerMovement.FinishedMovement && canAttack)
             {
-                
+
                 animator.SetInteger("Atk", 7);
 
                 playerMovement.TargetPosition = transform.position;
@@ -122,14 +97,14 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if(playerStats.level < 2)
+            if (playerStats.level < 2)
             {
-                
+
                 //play not enough mana sound
             }
             else
             {
-                
+
                 float manaCost = 15f;
                 if (playerMovement.FinishedMovement && fadeImages[0] != 1 && canAttack && currentMana >= manaCost)
                 {
@@ -144,12 +119,12 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (currentMana < manaCost)
                     {
-                       
+
                     }
 
                 }
             }
-           
+
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -174,16 +149,16 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (currentMana < manaCost)
                     {
-                        
+
                     }
 
                 }
             }
-           
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if(playerStats.level < 5)
+            if (playerStats.level < 5)
             {
                 //play not enough mana sound
             }
@@ -202,12 +177,12 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (currentMana < manaCost)
                     {
-                        
+
                     }
 
                 }
             }
-            
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -235,7 +210,7 @@ public class PlayerAttack : MonoBehaviour
 
                 }
             }
-            
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -258,12 +233,12 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (currentMana < manaCost)
                     {
-                        
+
                     }
 
                 }
             }
-            
+
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -286,19 +261,19 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (currentMana < manaCost)
                     {
-                       
+
                     }
 
                 }
             }
-            
+
         }
         else
         {
             animator.SetInteger("Atk", 0);
         }
 
-        if ( !playerMovement.canMove)
+        if (!playerMovement.canMove)
         {
             Vector3 targetPos = Vector3.zero;
 
@@ -312,9 +287,47 @@ public class PlayerAttack : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), 15f * Time.deltaTime);
         }
     }
-    void CheckToFade()
+    private void CheckForMana(float manaCost)
     {
-        if(fadeImages[0] == 1)
+        if (currentMana >= manaCost)
+        {
+            currentMana -= manaCost;
+        }
+
+
+    }
+    private void CheckForLevel()
+    {
+        switch (playerStats.level)
+        {
+            case 2:
+                reqImagies[0].gameObject.SetActive(false);
+                break;
+            case 3:
+                reqImagies[1].gameObject.SetActive(false);
+                break;
+            case 5:
+                reqImagies[2].gameObject.SetActive(false);
+                break;
+            case 9:
+                reqImagies[3].gameObject.SetActive(false);
+                break;
+            case 12:
+                reqImagies[4].gameObject.SetActive(false);
+                break;
+            case 15:
+                reqImagies[5].gameObject.SetActive(false);
+                break;
+
+        }
+    }
+    private void DisplayMana()
+    {
+        manaIcon.fillAmount = currentMana / maxMana;
+    }
+    private void CheckToFade()
+    {
+        if (fadeImages[0] == 1)
         {
             if (FadeAndWait(CDImage1, .25f))
             {
@@ -357,10 +370,10 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
-     bool FadeAndWait(Image fadeImg, float fadeTime)
+    private bool FadeAndWait(Image fadeImg, float fadeTime)
     {
         bool faded = false;
-        if(fadeImg == null)
+        if (fadeImg == null)
         {
             return faded;
         }
@@ -371,20 +384,22 @@ public class PlayerAttack : MonoBehaviour
         }
         fadeImg.fillAmount -= fadeTime * Time.deltaTime;
 
-        if(fadeImg.fillAmount <= 0f)
+        if (fadeImg.fillAmount <= 0f)
         {
             fadeImg.gameObject.SetActive(false);
             faded = true;
         }
         return faded;
     }
-    void RemoveCursorPoint()
+    private void RemoveCursorPoint()
     {
         GameObject cursoObj = GameObject.FindGameObjectWithTag("Cursor");
         if (cursoObj)
         {
             Destroy(cursoObj);
         }
-        
+
     }
+    #endregion
+
 }

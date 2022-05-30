@@ -6,19 +6,28 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
-    public float currentHealth;
-    public float maxHealth;
-    public bool isShielded;
-    public Animator animator;
-    public Image healthIMG;
-    public PlayerMovement playerMovement;
-    public GameManager gameManager;
-    public TextMeshProUGUI dieText;
+    #region Public Fields
     public bool Shielded
     {
         get { return isShielded; }
         set { isShielded = value; }
     }
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private bool isShielded;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private TextMeshProUGUI dieText;
+
+    private Animator animator;
+    private Image healthIMG;
+    private PlayerMovement playerMovement;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
 
     private void Awake()
     {
@@ -27,11 +36,15 @@ public class PlayerHealth : MonoBehaviour
         healthIMG = GameObject.Find("HealthIcon").GetComponent<Image>();
         playerMovement = GetComponent<PlayerMovement>();
     }
+
+    #endregion
+
+    #region Public Methods
     public void DieText()
     {
         dieText.gameObject.SetActive(true);
     }
-   public void GameOver()
+    public void GameOver()
     {
         SceneManager.LoadScene(0);
     }
@@ -61,4 +74,10 @@ public class PlayerHealth : MonoBehaviour
         }
         healthIMG.fillAmount = currentHealth / maxHealth;
     }
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

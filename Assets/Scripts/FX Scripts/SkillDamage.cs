@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class SkillDamage : MonoBehaviour
 {
-    public LayerMask enemyLayer;
-    public float radius = 0.5f;
-    public float damageCount = 5f;
-    public EnemyHealth enemyHealth;
-    public bool collided;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float radius = 0.5f;
+    [SerializeField] private float damageCount = 5f;
+    [SerializeField] private EnemyHealth enemyHealth;
+    private bool collided;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Update()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, radius, enemyLayer);
@@ -27,4 +34,14 @@ public class SkillDamage : MonoBehaviour
             enabled = false;
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Mehtods
+
+    #endregion
 }

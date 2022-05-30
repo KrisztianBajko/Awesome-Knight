@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class PlayerBasicAtack : MonoBehaviour
 {
-    public LayerMask enemyLayer;
-    public float radius = 0.5f;
-    public float damageCount = 5f;
-    public EnemyHealth enemyHealth;
-    public GameObject attackPoint;
-    public GameManager gameManager;
-   
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float radius = 0.5f;
+    [SerializeField] private float damageCount = 5f;
+    [SerializeField] private EnemyHealth enemyHealth;
+    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private GameManager gameManager;
+    #endregion
+
+    #region MonoBehaviour Callbacks
+
+    #endregion
+
+    #region Public Methods
     public void Attack()
     {
         Collider[] hits = Physics.OverlapSphere(attackPoint.transform.position, radius, enemyLayer);
@@ -22,4 +33,10 @@ public class PlayerBasicAtack : MonoBehaviour
             gameManager.BasicAttackSound();
         }
     }
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

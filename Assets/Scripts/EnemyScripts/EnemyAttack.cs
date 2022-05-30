@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float damageAmount = 10f;
-    public Transform playerTarget;
-    public Animator animator;
-    public bool finishedAttack = true;
-    public float damageDistance = 3f;
-    public PlayerHealth playerHealth;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float damageAmount = 10f;
+    [SerializeField] private float damageDistance = 3f;
+    private Transform playerTarget;
+    private Animator animator;
+    private bool finishedAttack = true;
+    private PlayerHealth playerHealth;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,8 +39,14 @@ public class EnemyAttack : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    bool CheckIfAttacking()
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+    private bool CheckIfAttacking()
     {
         bool isAttacking = false;
         if (!animator.IsInTransition(0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Atk1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Atk2"))
@@ -46,7 +59,7 @@ public class EnemyAttack : MonoBehaviour
         }
         return isAttacking;
     }
-    void DealDamage(bool isAttacking)
+    private void DealDamage(bool isAttacking)
     {
         if (isAttacking)
         {
@@ -56,4 +69,6 @@ public class EnemyAttack : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

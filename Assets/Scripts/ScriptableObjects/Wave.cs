@@ -4,19 +4,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Wave")]
 public class Wave : ScriptableObject
 {
+    #region Public Fields
     public GameObject[] enemyPrefab;
     public int numberOfEnemies;
     public int numberOfBosses;
     public float spawnRate;
+    #endregion
 
+    #region Private Fields
+
+    #endregion
+
+    #region Public methods
 
     public void SpawnWave(Vector3 position, int enemyIndex)
     {
         Instantiate(enemyPrefab[enemyIndex], position, Quaternion.identity);
     }
 
+    #endregion
 
-
-
-  
 }

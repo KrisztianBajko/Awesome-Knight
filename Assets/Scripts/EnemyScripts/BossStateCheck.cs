@@ -12,11 +12,18 @@ public enum BossState
 }
 public class BossStateCheck : MonoBehaviour
 {
-    public Transform playerTarget;
-    public BossState bossState = BossState.None;
-    public float distanceToTarget;
-    public EnemyHealth bossHealth;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float distanceToTarget;
+    private Transform playerTarget;
+    private BossState bossState = BossState.None;
+    private EnemyHealth bossHealth;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
@@ -26,7 +33,19 @@ public class BossStateCheck : MonoBehaviour
     {
         SetState();
     }
-    void SetState()
+
+    #endregion
+
+    #region Public Methods
+    public BossState BossState
+    {
+        get { return bossState; }
+        set { bossState = value; }
+    }
+    #endregion
+
+    #region Private Methods
+    private void SetState()
     {
         distanceToTarget = Vector3.Distance(transform.position, playerTarget.position);
         if(bossState != BossState.Death)
@@ -51,9 +70,7 @@ public class BossStateCheck : MonoBehaviour
             }
         }
     }
-    public BossState BossState
-    {
-        get { return bossState; }
-        set { bossState = value; }
-    }
+
+    #endregion
+   
 }

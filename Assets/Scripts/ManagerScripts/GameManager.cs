@@ -4,31 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip groundImpact;
-    public AudioClip basicAttack;
-    public AudioClip hit;
-    public AudioClip shield;
-    public AudioClip heal;
-    public AudioClip thunder;
-    public AudioClip tornado;
-    public AudioClip lvlUp;
-    public AudioClip playerDie;
-    public GameObject pauseMenu;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip groundImpact;
+    [SerializeField] private AudioClip basicAttack;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioClip shield;
+    [SerializeField] private AudioClip heal;
+    [SerializeField] private AudioClip thunder;
+    [SerializeField] private AudioClip tornado;
+    [SerializeField] private AudioClip lvlUp;
+    [SerializeField] private AudioClip playerDie;
+    [SerializeField] private GameObject pauseMenu;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
-
-
-
-
-
-
         }
     }
+
+    #endregion
+
+    #region Public Mehtods
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
@@ -74,4 +81,9 @@ public class GameManager : MonoBehaviour
     {
         audioSource.PlayOneShot(basicAttack);
     }
+    #endregion
+
+    #region Private Mehtods
+
+    #endregion
 }

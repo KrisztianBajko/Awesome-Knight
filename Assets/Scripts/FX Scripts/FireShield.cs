@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class FireShield : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    private PlayerHealth playerHealth;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-
-
 
     }
 
@@ -21,4 +27,14 @@ public class FireShield : MonoBehaviour
     {
         playerHealth.Shielded = false;
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

@@ -6,26 +6,42 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public Image expImg;
-    public TextMeshProUGUI levelText;
-    public float exp;
-    public float expToNextLevel;
+    #region Public Fields
     public int level;
-    public float expMultiplayer;
-    public TextMeshProUGUI expBarExp;
-    public GameManager gameManager;
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private Image expImg;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private float exp;
+    [SerializeField] private float expToNextLevel;
+    [SerializeField] private float expMultiplayer;
+    [SerializeField] private TextMeshProUGUI expBarExp;
+    [SerializeField] private GameManager gameManager;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Update()
     {
         
         DisplayExpAndLevel();
         HandleExp();
     }
+
+    #endregion
+
+    #region Public Methods
     public void Exp(float expAmount)
     {
         exp += expAmount;
         expImg.fillAmount = exp / expToNextLevel;
     }
-    void HandleExp()
+    #endregion
+
+    #region Private Methods
+
+    private void HandleExp()
     {
         if (exp >= expToNextLevel)
         {
@@ -38,10 +54,12 @@ public class PlayerStats : MonoBehaviour
             
         }
     }
-    void DisplayExpAndLevel()
+    private void DisplayExpAndLevel()
     {
         levelText.text = level.ToString();
         expImg.fillAmount = exp / expToNextLevel;
         expBarExp.text = exp + "/" + expToNextLevel;
     }
+
+    #endregion
 }

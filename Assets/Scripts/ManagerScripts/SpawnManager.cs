@@ -4,37 +4,36 @@ using UnityEngine;
 using TMPro;
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject spawnPoint;
-    public GameObject enemy;
+    #region Public Fields
 
-    public PlayerMovement playerMovement;
-    public GameObject[] bossSpawnPoint;
-    public GameObject boss;
-
-    public TextMeshProUGUI killText;
-    public int kills;
-
-    public int bossCount;
-    public int maxBossCount;
-    public int maxEnemyCount;
-
-    public float timer;
+    #endregion
+    
 
     #region Private Fields
-    [SerializeField]
-    private float timeBetweenWaves;
-    public float timeBetwennBosses;
-    [SerializeField]
-    private float spawnRate;
-    [SerializeField]
-    private int enemyCount;
-    
-    public float currentTime;
-    public float timeForBoss;
+    [SerializeField] private float timeBetweenWaves;
+    [SerializeField] private float timeBetwennBosses;
+    [SerializeField] private float spawnRate;
+    [SerializeField] private int enemyCount;
+    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject[] bossSpawnPoint;
+    [SerializeField] private GameObject boss;
+    [SerializeField] private TextMeshProUGUI killText;
+    [SerializeField] private int kills;
+    [SerializeField] private int bossCount;
+    [SerializeField] private int maxBossCount;
+    [SerializeField] private int maxEnemyCount;
+    [SerializeField] private float timer;
+    [SerializeField] private float currentTime;
+    [SerializeField] private float timeForBoss;
+
     private bool canSpawn = true;
     private bool canSpawnBoss = true;
+    public PlayerMovement playerMovement;
+
     #endregion
 
+    #region MonoBehaviour Callbacks
     void Start()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -113,7 +112,6 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    #region MonoBehaviour Callbacks
   
     IEnumerator SpawnEnemy()
     {
@@ -167,10 +165,15 @@ public class SpawnManager : MonoBehaviour
     }
     #endregion
 
+    #region Public Methods
     public void KillCount(int k)
     {
         kills += k;
     }
-    
-   
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

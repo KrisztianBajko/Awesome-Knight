@@ -6,14 +6,20 @@ using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
+    #region Public Fields
     public float health;
-    public float maxHealth;
-    public Image healthIMG;
-    public Canvas healCanvas;
-    public PlayerStats playerStats;
-    public float expAmount;
-    public SpawnManager spawnManager;
-    
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float expAmount;
+    [SerializeField] private Image healthIMG;
+    [SerializeField] private Canvas healCanvas;
+    private PlayerStats playerStats;
+    private SpawnManager spawnManager;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -25,6 +31,10 @@ public class EnemyHealth : MonoBehaviour
         healCanvas.transform.LookAt(Camera.main.transform.position);
         healCanvas.transform.Rotate(0, 180, 0);
     }
+
+    #endregion
+
+    #region Public Methods
     public void TakeDamage(float dmg)
     {
         health -= dmg;
@@ -35,11 +45,15 @@ public class EnemyHealth : MonoBehaviour
             AddExp();
         }
     }
+    #endregion
 
-    void AddExp()
+    #region Private Methods
+
+    private void AddExp()
     {
         playerStats.Exp(expAmount);
         spawnManager.KillCount(1);
 
     }
+    #endregion
 }

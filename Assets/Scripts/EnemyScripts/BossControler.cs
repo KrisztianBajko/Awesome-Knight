@@ -5,14 +5,24 @@ using UnityEngine.AI;
 
 public class BossControler : MonoBehaviour
 {
-    public Transform playerTarget;
-    public BossStateCheck bossStateCheck;
-    public NavMeshAgent navMeshAgent;
-    public Animator animator;
-    public bool finishedAttacking = true;
-    public float currentAttackTime;
-    public float waitAttackTime = 1f;
-    public PlayerMovement playerMovement;
+    #region Public Fields
+
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float waitAttackTime = 1f;
+    private Transform playerTarget;
+    private BossStateCheck bossStateCheck;
+    private NavMeshAgent navMeshAgent;
+    private Animator animator;
+    private bool finishedAttacking = true;
+    private float currentAttackTime;
+    private PlayerMovement playerMovement;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -27,6 +37,19 @@ public class BossControler : MonoBehaviour
         {
             return;
         }
+        CheckForState();
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    private void CheckForState()
+    {
         if (finishedAttacking)
         {
             GetStateControl();
@@ -34,14 +57,13 @@ public class BossControler : MonoBehaviour
         else
         {
             animator.SetInteger("Atk", 0);
-            if(!animator.IsInTransition(0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (!animator.IsInTransition(0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 finishedAttacking = true;
             }
         }
     }
-   
-    void GetStateControl()
+    private void GetStateControl()
     {
         if(bossStateCheck.BossState == BossState.Death)
         {
@@ -81,4 +103,6 @@ public class BossControler : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

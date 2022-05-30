@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class HealPickUp : MonoBehaviour
 {
-    public float healAmount;
-    public PlayerHealth playerHealth;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float healAmount;
+    private PlayerHealth playerHealth;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
@@ -25,4 +34,14 @@ public class HealPickUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

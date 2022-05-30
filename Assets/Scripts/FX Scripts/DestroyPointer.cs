@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class DestroyPointer : MonoBehaviour
 {
-    public Transform player;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    private Transform player;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -13,11 +20,21 @@ public class DestroyPointer : MonoBehaviour
    
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(Vector3.Distance(transform.position, player.position)<= 1.3f)
         {
             Destroy(gameObject);
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    #endregion
 }

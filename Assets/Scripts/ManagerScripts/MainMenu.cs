@@ -5,9 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Animator animator;
-    public Menu menu;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private Animator animator;
+    [SerializeField] private Menu menu;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
+
+    #endregion
+
+    #region Public Methods
     public void OnClick()
     {
         menu.PlayClickSound();
@@ -34,6 +46,11 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-  
-  
+    #endregion
+
+    #region Private Mehtods
+
+    #endregion
+
+
 }

@@ -4,20 +4,44 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float followHeight = 8f;
-    public float followDistance = 6f;
+    #region Public Fields
 
-    public Transform player;
 
-    public float targetHeight;
-    public float currentHeight;
-    public float currentRotation;
+    #endregion
 
+    #region Private Fields
+    [SerializeField] private float followHeight = 8f;
+    [SerializeField] private float followDistance = 6f;
+
+    private Transform player;
+    private float targetHeight;
+    private float currentHeight;
+    private float currentRotation;
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Update()
+    {
+        FollowPlayer();
+
+
+
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    private void FollowPlayer()
     {
         targetHeight = player.position.y + followHeight;
 
@@ -33,8 +57,7 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = targetPosition;
         transform.LookAt(player);
-
-
-
     }
+
+    #endregion
 }

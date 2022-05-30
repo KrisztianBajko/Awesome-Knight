@@ -16,29 +16,38 @@ public enum EnemyState
 }
 public class EnemyController : MonoBehaviour
 {
-    public float attackDistance = 3f;
-    public float alertAttackDistance = 12f;
-    public float followDistance = 25f;
-    public float enemyToPlayerDistance;
-    public EnemyState enemyCurrentState = EnemyState.Idle;
-    public EnemyState enemyLastState = EnemyState.Idle;
-    public Transform playerTarget;
-    public Vector3 initialPosition;
-    public float moveSpeed = 3f;
-    public float walkSpeed = 1f;
-    public CharacterController CC;
-    public Vector3 whereToMove = Vector3.zero;
-    public float currentAttackTime;
-    public float waitAttackTime = 1f;
-    public Animator animator;
-    public bool finishedAnimation = true;
-    public bool finishedMovement = true;
-    public NavMeshAgent navAgent;
-    public Vector3 whereToNavigate;
-    public EnemyHealth enemyHealth;
-    public PlayerMovement playerMovement;
-    public GameObject[] pickUps;
-    public bool isDead = false;
+    #region Public Fields
+
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private float attackDistance = 3f;
+    [SerializeField] private float alertAttackDistance = 12f;
+    [SerializeField] private float followDistance = 25f;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float walkSpeed = 1f;
+    [SerializeField] private float waitAttackTime = 1f;
+    [SerializeField] private GameObject[] pickUps;
+
+    private float enemyToPlayerDistance;
+    private EnemyState enemyCurrentState = EnemyState.Idle;
+    private EnemyState enemyLastState = EnemyState.Idle;
+    private Transform playerTarget;
+    private Vector3 initialPosition;
+    private CharacterController CC;
+    private Vector3 whereToMove = Vector3.zero;
+    private float currentAttackTime;
+    private Animator animator;
+    private bool finishedAnimation = true;
+    private bool finishedMovement = true;
+    private NavMeshAgent navAgent;
+    private Vector3 whereToNavigate;
+    private EnemyHealth enemyHealth;
+    private PlayerMovement playerMovement;
+    private bool isDead = false;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Awake()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -96,9 +105,15 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-   
-   
-    void DropItem()
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
+
+    private void DropItem()
     {
         if(Random.value <= 0.35f)
         {
@@ -107,7 +122,7 @@ public class EnemyController : MonoBehaviour
             Instantiate(pickUps[index], pos, Quaternion.identity);
         }
     }
-    EnemyState SetEnemyState(EnemyState curState, EnemyState lastState, float enemyToPlayerDistance)
+    private EnemyState SetEnemyState(EnemyState curState, EnemyState lastState, float enemyToPlayerDistance)
     {
         enemyToPlayerDistance = Vector3.Distance(transform.position, playerTarget.position);
         float distance = Vector3.Distance(initialPosition, transform.position);
@@ -138,7 +153,7 @@ public class EnemyController : MonoBehaviour
         }
         return curState;
     }
-    void GetStateControl(EnemyState curState)
+    private void GetStateControl(EnemyState curState)
     {
         if(curState == EnemyState.Run || curState == EnemyState.Pause)
         {
@@ -212,4 +227,6 @@ public class EnemyController : MonoBehaviour
             navAgent.isStopped = true;
         }
     }
+
+    #endregion
 }

@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class FireTornado : MonoBehaviour
 {
-    public LayerMask enemyLayer;
-    public float radius = .5f;
-    public float damageCount = 10f;
-    public GameObject fireExplosion;
-    public EnemyHealth enemyHealth;
-    public bool collided;
-    public float speed = 3f;
+    #region Public Fields
 
+    #endregion
+
+    #region Private Fields
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float radius = .5f;
+    [SerializeField] private float damageCount = 10f;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private GameObject fireExplosion;
+
+    private EnemyHealth enemyHealth;
+    private bool collided;
+    #endregion
+
+    #region MonoBehaviour Callbacks
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -23,6 +31,14 @@ public class FireTornado : MonoBehaviour
         Move();
         CheckForDamage();
     }
+
+    #endregion
+
+    #region Public Methods
+
+    #endregion
+
+    #region Private Methods
     private void Move()
     {
         transform.Translate(Vector3.forward * (speed * Time.deltaTime));
@@ -46,4 +62,5 @@ public class FireTornado : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 }
