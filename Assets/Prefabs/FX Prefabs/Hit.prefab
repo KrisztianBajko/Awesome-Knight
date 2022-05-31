@@ -14423,10 +14423,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  radius: 1.5
-  damageCount: 80
+  radius: 1
+  damageCount: 100
   enemyHealth: {fileID: 0}
-  collided: 0
 --- !u!1 &151822
 GameObject:
   m_ObjectHideFlags: 0

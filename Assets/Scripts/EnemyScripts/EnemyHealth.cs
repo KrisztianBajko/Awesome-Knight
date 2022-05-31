@@ -16,13 +16,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Image healthIMG;
     [SerializeField] private Canvas healCanvas;
     private PlayerStats playerStats;
-    private SpawnManager spawnManager;
+    private WaveSpawnManager spawnManager;
     #endregion
 
     #region MonoBehaviour Callbacks
     private void Awake()
     {
-        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<WaveSpawnManager>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         health = maxHealth;
     }

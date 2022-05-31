@@ -9,6 +9,7 @@ public class Wave : ScriptableObject
     public int numberOfEnemies;
     public int numberOfBosses;
     public float spawnRate;
+    public List<GameObject> spawnedEnemies = new List<GameObject>();
     #endregion
 
     #region Private Fields
@@ -19,7 +20,10 @@ public class Wave : ScriptableObject
 
     public void SpawnWave(Vector3 position, int enemyIndex)
     {
-        Instantiate(enemyPrefab[enemyIndex], position, Quaternion.identity);
+        GameObject spawnedEnemy = Instantiate(enemyPrefab[enemyIndex], position, Quaternion.identity);
+
+        spawnedEnemies.Add(spawnedEnemy);
+
     }
 
     #endregion

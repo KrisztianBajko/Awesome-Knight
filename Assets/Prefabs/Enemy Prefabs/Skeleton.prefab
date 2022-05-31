@@ -1658,28 +1658,12 @@ MonoBehaviour:
   attackDistance: 2
   alertAttackDistance: 12
   followDistance: 25
-  enemyToPlayerDistance: 0
-  enemyCurrentState: 0
-  enemyLastState: 0
-  playerTarget: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
   moveSpeed: 3
   walkSpeed: 1
-  CC: {fileID: 0}
-  whereToMove: {x: 0, y: 0, z: 0}
-  currentAttackTime: 0
   waitAttackTime: 0.8
-  animator: {fileID: 0}
-  finishedAnimation: 1
-  finishedMovement: 1
-  navAgent: {fileID: 0}
-  whereToNavigate: {x: 0, y: 0, z: 0}
-  enemyHealth: {fileID: 0}
-  playerMovement: {fileID: 0}
   pickUps:
   - {fileID: 484222660339616386, guid: 61785971f71d5924b8eeae48b704b703, type: 3}
   - {fileID: 7174063915916976703, guid: ab80b1d21d7256e42a1dfc0e490e6cea, type: 3}
-  isDead: 0
 --- !u!114 &1780970579330113212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,11 +1678,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   maxHealth: 200
+  expAmount: 15
   healthIMG: {fileID: 1745587398}
   healCanvas: {fileID: 146183714}
-  playerStats: {fileID: 0}
-  expAmount: 250
-  spawnManager: {fileID: 0}
 --- !u!114 &1706198661778324501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,11 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 25
-  playerTarget: {fileID: 0}
-  animator: {fileID: 0}
-  finishedAttack: 1
   damageDistance: 2
-  playerHealth: {fileID: 0}
 --- !u!1 &4560687661716908497
 GameObject:
   m_ObjectHideFlags: 0

@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
   randomSeed: 0
@@ -739,7 +739,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1683,7 +1683,7 @@ ParticleSystem:
     orbitalX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1789,7 +1789,7 @@ ParticleSystem:
     orbitalZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 7
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2001,7 +2001,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.14
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9647,11 +9647,9 @@ MonoBehaviour:
     m_Bits: 512
   radius: 1.5
   damageCount: 200
+  speed: 3.5
   fireExplosion: {fileID: 1295225198179992, guid: 6890533e0b7794915a8cbfad0a40702c,
     type: 3}
-  enemyHealth: {fileID: 0}
-  collided: 0
-  speed: 3.5
 --- !u!1 &1535840968136520
 GameObject:
   m_ObjectHideFlags: 0

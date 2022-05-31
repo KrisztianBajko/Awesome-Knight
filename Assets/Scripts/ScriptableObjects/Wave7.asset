@@ -10,37 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69cfa4a1d701118498172ef2cbc6b3a8, type: 3}
-  m_Name: SecondWave
+  m_Name: Wave7
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 4560678018121869327, guid: 2927ebd138e286c458b98aca5b7d716c, type: 3}
   - {fileID: 129828, guid: 7b390dab51bb74f1d8de95c4e75d3b4a, type: 3}
-  numberOfEnemies: 5
-  numberOfBosses: 0
+  numberOfEnemies: 20
+  numberOfBosses: 3
   spawnRate: 2
-  spawnedEnemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawnedEnemies: []

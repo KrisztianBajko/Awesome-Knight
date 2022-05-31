@@ -94,6 +94,8 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("Death", true);
             CC.enabled = false;
             navAgent.enabled = false;
+
+
             if(!animator.IsInTransition(0)&& animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
             {
                 Destroy(gameObject, 2f);

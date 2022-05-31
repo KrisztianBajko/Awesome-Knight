@@ -32966,7 +32966,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  radius: 3.5
+  radius: 2
   damageCount: 75
   enemyHealth: {fileID: 0}
-  collided: 0
